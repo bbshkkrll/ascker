@@ -1,7 +1,7 @@
 from django.db import models
 
 
-class ImageModel(models.Model):
+class File(models.Model):
     original_size = models.CharField('Original size', max_length=24)
     converted_size = models.CharField('Converted size', max_length=24)
     original_img = models.FileField('Original size', upload_to='originals/%m/%d/')
@@ -15,7 +15,7 @@ class ImageModel(models.Model):
 class ConvertRequest(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
-    image = models.OneToOneRel(ImageModel, related_name='sf')
+    image = models.OneToOneField(File)
 
     class Meta:
         verbose_name = 'Convert request'
