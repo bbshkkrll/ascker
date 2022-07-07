@@ -35,6 +35,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'converter.apps.ConverterConfig'
 ]
 
 MIDDLEWARE = [
@@ -72,10 +73,10 @@ WSGI_APPLICATION = 'mysite.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': BASE_DIR / 'converter_db',
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'converter_db',
         'USER': 'postgres',
-        'PASSWORD': os.environ['DB_PASSWORD'],
+        'PASSWORD': str(os.environ['DB_PASSWORD']),
         'HOST': 'localhost',
         'PORT': '5432'
     }

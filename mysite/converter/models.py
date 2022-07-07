@@ -13,9 +13,10 @@ class File(models.Model):
 
 
 class ConvertRequest(models.Model):
+    username = models.EmailField()
+    image = models.OneToOneField(File, on_delete=models.DO_NOTHING)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
-    image = models.OneToOneField(File)
 
     class Meta:
         verbose_name = 'Convert request'
