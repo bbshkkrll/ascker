@@ -1,10 +1,13 @@
 from django.shortcuts import render
 from django.http.response import HttpResponse
 
+from .models import *
+
 
 def index(request):
-    return HttpResponse('<h1>Hello World</h1>')
-
-
-def test(request):
-    return HttpResponse('Test')
+    requests = ConvertRequest.objects.all()
+    contex = {
+        'requests': requests,
+        'title': 'Список запросов'
+    }
+    return render(request, 'converter/index.html', contex)
